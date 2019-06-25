@@ -1,21 +1,18 @@
-package com.exampe.helloworld;
-
 import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
+import com.datastax.driver.core.Session;
 import com.datastax.driver.core.utils.UUIDs;
 
 public class HelloWorld {
-
-    public static void main(String[] args){
-        System.out.println("Hello world");
+    public static void main(String[] args) {
+        System.out.println("Sup");
         Cluster cluster = null;
-        try{
-            cluster = Cluster.builder().addContactPoint("localhost").build();
-
+        try {
+            cluster = Cluster.builder()
+                    .addContactPoint("localhost")
+                    .build();
             Session session = cluster.connect();
-
             ResultSet rs = session.execute("select release_version from system.local");
             Row row = rs.one();
             System.out.println(row.getString("release_version"));

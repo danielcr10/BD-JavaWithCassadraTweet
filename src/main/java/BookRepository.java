@@ -1,5 +1,3 @@
-package com.exampe.helloworld;
-
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
@@ -21,7 +19,7 @@ public class BookRepository {
      * Creates the books table
      */
     public void  createTable(){
-        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS")
+        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(TABLE_NAME).append("(")
                 .append("id uuid PRIMARY KEY, ")
                 .append("title text,")
@@ -35,7 +33,7 @@ public class BookRepository {
      * Creates the books table
      */
     public void createTableBooksByTitle(){
-        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS")
+        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(TABLE_NAME_BY_TITLE)
                 .append("(").append("id uuid, ")
                 .append("title text,")

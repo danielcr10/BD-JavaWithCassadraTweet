@@ -1,5 +1,3 @@
-package com.exampe.helloworld;
-
 import com.datastax.driver.core.Session;
 
 /**

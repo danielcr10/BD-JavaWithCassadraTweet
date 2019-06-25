@@ -1,5 +1,3 @@
-package com.exampe.helloworld;
-
 import java.util.UUID;
 
 public class Book {
