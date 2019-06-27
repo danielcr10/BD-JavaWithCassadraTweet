@@ -37,9 +37,14 @@ public class KeyspaceRepository {
      * @param keyspaceName the name of the keyspace to delete.
      */
     public void deleteKeyspace(String keyspaceName) {
+        System.out.println("deleteKeyspace – init");
         StringBuilder sb = new StringBuilder("DROP KEYSPACE ").append(keyspaceName);
 
         final String query = sb.toString();
+        System.out.println("deleteKeyspace – command: " + query.toUpperCase());
         session.execute(query);
+
+        System.out.println("deleteKeyspace – end");
+
     }
 }

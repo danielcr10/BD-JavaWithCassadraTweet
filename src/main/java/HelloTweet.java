@@ -24,9 +24,10 @@ public class HelloTweet {
             System.out.println("Repositorio tweet");
 
             TweetRepository tr = new TweetRepository(session);
-            tr.createTable();
             System.out.println("Cria tabela");
+            tr.createTable();
 
+            System.out.println("Inseretweets");
             Tweet tweet = new Tweet("NeymarJr", "Eai fake?", "02-02-19");
             tr.insertTweet(tweet);
             Tweet tweet2 = new Tweet("Messi", "isso eh problema", "02-02-19");
@@ -38,19 +39,23 @@ public class HelloTweet {
             Tweet tweet5 = new Tweet("Suarez", "Olha a dentada",
                     "15-06-14");
             tr.insertTweet(tweet5);
-            System.out.println("Inseretweets");
 
-            tr.selectAll();
+
             System.out.println("Buscando tweets");
+            tr.selectAll();
 
-            tr.deleteTweet("Olha a dentada");
+
             System.out.println("Deleting tweet \"Olha a dentada\"");
+            tr.deleteTweet("Olha a dentada");
 
-            tr.deleteTable("Tweets");
+
             System.out.println("Deleta tabela Tweets");
+            tr.deleteTable("Tweets");
 
-            sr.deleteKeyspace("tweets");
+
             System.out.println("Deleta keyspace");
+            sr.deleteKeyspace("tweets");
+
 
         } finally {
             if (cluster != null) cluster.close();
