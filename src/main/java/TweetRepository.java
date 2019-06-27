@@ -99,8 +99,8 @@ public class TweetRepository {
 
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(TABLE_NAME+"ByFavorited").append("(")
-                .append("ttext text PRIMARY KEY, ")
                 .append("usr text,")
+                .append("ttext text PRIMARY KEY, ")
                 .append("date text);");
         final String query = sb.toString();
         System.out.println("createTableTweetsByFavorited – command: " + query.toUpperCase());
