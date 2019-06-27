@@ -109,3 +109,20 @@ public class TweetRepository {
         System.out.println("createTableTweetsByFavorited – end");
     }
 }
+
+
+/**
+ createdate
+ id
+ text
+ source
+ istruncated
+ geolocation
+ isfavorited
+ user
+ contributors
+
+ createtable com geral
+
+ buscar byusername ou bypalavra
+ */
