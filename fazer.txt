@@ -1,0 +1,3 @@
+Todos os 3 projetos no mesmo repositorio (pastas diferentes)
+Nome do repositorio: inf1802-tweets-kafka-cassandra
+Criação demodulos dentro do proprio intellij
