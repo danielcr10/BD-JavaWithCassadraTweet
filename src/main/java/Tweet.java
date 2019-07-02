@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.List;
 
 import twitter4j.GeoLocation;
 
@@ -6,21 +7,19 @@ public class Tweet {
     private String Username;
     private String TweetText;
     private String DateSent;
-    private Date CreatedAt;
     private long Id;
     private String Source;
     private boolean IsTruncated;
     private GeoLocation Geolocation;
     private boolean IsFavorited;
-    private long[] Contributors;
+    private List<Long> Contributors;
 
     public Tweet(String username, String tweetText, String dateSent,
-                 Date createdAt, long id, String source, boolean isTruncated,
-                 GeoLocation geolocation, boolean isFavorited, long[] contributors) {
+                 long id, String source, boolean isTruncated,
+                 GeoLocation geolocation, boolean isFavorited, List<Long> contributors) {
         Username = username;
         TweetText = tweetText;
         DateSent = dateSent;
-        CreatedAt = createdAt;
         Id = id;
         Source = source;
         IsTruncated = isTruncated;
@@ -43,14 +42,6 @@ public class Tweet {
 
     public String toString() { return "@" + this.Username +
             ": " + this.TweetText; }
-
-    public Date getCreatedAt() {
-        return CreatedAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        CreatedAt = createdAt;
-    }
 
     public long getId() {
         return Id;
@@ -92,11 +83,11 @@ public class Tweet {
         IsFavorited = favorited;
     }
 
-    public long[] getContributors() {
+    public List<Long> getContributors() {
         return Contributors;
     }
 
-    public void setContributors(long[] contributors) {
+    public void setContributors(List<Long> contributors) {
         Contributors = contributors;
     }
 }
