@@ -76,7 +76,8 @@ public class HelloTweet {
             tr.insertTweetByUser(tweet5);
             tr.insertTweetByUser(tweet6);
 
-
+            System.out.println("\n\nBuscando tweets em TweetsByUser");
+            tr.selectAllByUser();
 
             System.out.println("\n\nBuscando tweets por usuario: Messi");
             tr.selectAllByUser("Messi");

@@ -173,15 +173,15 @@ public void createTableByUser() {
                     geo,
                     r.getBool("isFavorited"),
                     r.getList("contributors",Long.class));
-            System.out.println("@" + tt.getUsername() + ":" + " " + tt.getTweetText());
+            System.out.println("\n@" + tt.getUsername() + ":" + " " + tt.getTweetText());
             System.out.println("Dados do tweet - Data: " + tt.getDateSent() +
-                    " id: " + tt.getId() +
-                    " source: " + tt.getSource() +
-                    " isTruncated?: " + tt.isTruncated() +
-                    " isFavorited?: " + tt.isFavorited() +
-                    " geolocalizacao - latitude: " + tt.getGeolocation().getLatitude() +
-                    " geolocalizacao - longitude: " + tt.getGeolocation().getLongitude() +
-                    " contributors:");
+                    " \nid: " + tt.getId() +
+                    " \nsource: " + tt.getSource() +
+                    " \nisTruncated?: " + tt.isTruncated() +
+                    " \nisFavorited?: " + tt.isFavorited() +
+                    " \ngeolocalizacao - latitude: " + tt.getGeolocation().getLatitude() +
+                    " \ngeolocalizacao - longitude: " + tt.getGeolocation().getLongitude() +
+                    " \ncontributors:");
             for(Long contributor : tt.getContributors()) {
                 System.out.print(" " + contributor.longValue() + " ");
             }
@@ -259,28 +259,4 @@ public void createTableByUser() {
 
     }
 
-    /**
-     * Tabelas para listar todos tweets favoritados
-     */
-    public void createTableTweetsByUser(){
-        System.out.println("createTableTweetsByUser – init");
-
-        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
-                .append(TABLE_NAME+"ByUser").append("(")
-                .append("usr text, ")
-                .append("ttext text, ")
-                .append("date text, ")
-                .append("id bigint, ")
-                .append("source text, ")
-                .append("isTruncated boolean, ")
-                .append("latitude double, ")
-                .append("longitude double, ")
-                .append("isFavorited boolean PRIMARY KEY, ")
-                .append("contributors list<bigint>);");
-        final String query = sb.toString();
-        System.out.println("createTableTweetsByUser – command: " + query.toUpperCase());
-
-        session.execute(query);
-        System.out.println("createTableTweetsByUser – end");
-    }
 }
