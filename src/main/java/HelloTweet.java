@@ -63,12 +63,18 @@ public class HelloTweet {
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, false,null);
             tr.insertTweet(tweet5);
+            Tweet tweet6 = new Tweet("Messi", "Fui eliminado",
+                    "07-02-19", new Random().nextLong(),
+                    "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
+                    true, geo, true,null);
+            tr.insertTweet(tweet6);
 
             tr.insertTweetByUser(tweet);
             tr.insertTweetByUser(tweet2);
             tr.insertTweetByUser(tweet3);
             tr.insertTweetByUser(tweet4);
             tr.insertTweetByUser(tweet5);
+            tr.insertTweetByUser(tweet6);
 
 
 

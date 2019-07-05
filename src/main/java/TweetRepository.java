@@ -20,7 +20,7 @@ public class TweetRepository {
 
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(TABLE_NAME).append("(")
-                .append("usr text, ") // PRIMARY KEY
+                .append("usr text, ")
                 .append("ttext text, ")
                 .append("date text, ")
                 .append("id bigint PRIMARY KEY, ")
@@ -45,7 +45,7 @@ public void createTableByUser() {
 
     StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
             .append(TABLE_NAME+"ByUser").append("(")
-            .append("usr text PRIMARY KEY, ") // PRIMARY KEY
+            .append("usr text, ")
             .append("ttext text, ")
             .append("date text, ")
             .append("id bigint, ")
@@ -54,7 +54,9 @@ public void createTableByUser() {
             .append("latitude double, ")
             .append("longitude double, ")
             .append("isFavorited boolean, ")
-            .append("contributors list<bigint>);");
+            .append("contributors list<bigint>, ")
+            .append("PRIMARY KEY ((id, usr))")
+            .append(");");
 
     final String query = sb.toString();
     System.out.println("createTable – command: " + query.toUpperCase());
@@ -68,7 +70,7 @@ public void createTableByUser() {
         System.out.println("insertTweet – init");
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
-                .append(TABLE_NAME).append("(usr, ttext, date, id, source, isTruncated,latitude, longitude, isFavorited, contributors) ") //tem queguardar a string do user e o geolocatio guarda latitude e longitude
+                .append(TABLE_NAME).append("(usr, ttext, date, id, source, isTruncated,latitude, longitude, isFavorited, contributors) ")
                 .append("VALUES ('").append(tweet.getUsername()).append("', '")
                 .append(tweet.getTweetText()).append("', '")
                 .append(tweet.getDateSent()).append("', ")
@@ -211,7 +213,7 @@ public void createTableByUser() {
                     geo,
                     r.getBool("isFavorited"),
                     r.getList("contributors",Long.class));
-            System.out.println("@" + tt.getUsername() + ":" + " " + tt.getTweetText());
+            System.out.println("\n@" + tt.getUsername() + ":" + " " + tt.getTweetText());
             System.out.println("Dados do tweet - Data: " + tt.getDateSent() +
                     " \nid: " + tt.getId() +
                     " \nsource: " + tt.getSource() +
@@ -282,20 +284,3 @@ public void createTableByUser() {
         System.out.println("createTableTweetsByUser – end");
     }
 }
-
-
-/**
- createdate
- id
- text
- source
- istruncated
- geolocation
- isfavorited
- user
- contributors
-
- createtable com geral
-
- buscar byusername ou bypalavra
- */
