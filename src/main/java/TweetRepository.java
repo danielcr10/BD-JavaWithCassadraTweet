@@ -246,6 +246,22 @@ public void createTableByUser() {
 
     }
 
+    public void deleteTweetByUser(long id, String user) {
+        System.out.println("deleteTweetByUser – init");
+        StringBuilder sb = new StringBuilder("DELETE FROM ")
+                .append(TABLE_NAME+"ByUser").append(" WHERE id = ")
+                .append(id)
+                .append(" AND usr = '")
+                .append(user)
+                .append("';");
+
+        final String query = sb.toString();
+        System.out.println("deleteTweet – command: " + query.toUpperCase());
+        session.execute(query);
+        System.out.println("deleteTweetByUser – end\n");
+
+    }
+
     public void deleteTable(String tableName) {
         System.out.println("deleteTable – init");
 

@@ -33,41 +33,47 @@ public class HelloTweet {
             System.out.println("Cria tabela por usuario");
             tr.createTableByUser();
 
-            System.out.println("Inseretweets");
-//            String username, String tweetText, String dateSent,
-//            long id, String source, boolean isTruncated,
-//            GeoLocation geolocation, boolean isFavorited, List<Long> contributors
             GeoLocation geo = new GeoLocation(8748943, 9474740);
             Tweet tweet = new Tweet("NeymarJr", "Eai fake?",
                     "02-02-19", new Random().nextLong(),
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, true,null );
-            tr.insertTweet(tweet);
+
             Tweet tweet2 = new Tweet("Messi", "isso eh problema",
                     "02-02-19", new Random().nextLong(),
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     false, geo, false,null);
-            tr.insertTweet(tweet2);
+
             Tweet tweet3 = new Tweet("Obama", "Hey fake",
                     "02-03-19", new Random().nextLong(),
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, true,null);
-            tr.insertTweet(tweet3);
+
             Tweet tweet4 = new Tweet("NeymarJr", "Chegando com os refri",
                     "22-01-13", new Random().nextLong(),
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, true,null);
-            tr.insertTweet(tweet4);
+
             Tweet tweet5 = new Tweet("Suarez", "Olha a dentada",
                     "15-06-14", 12,
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, false,null);
-            tr.insertTweet(tweet5);
+
             Tweet tweet6 = new Tweet("Messi", "Fui eliminado",
                     "07-02-19", new Random().nextLong(),
                     "a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client",
                     true, geo, true,null);
+
+            System.out.println("Insere Tweets");
+
+            tr.insertTweet(tweet);
+            tr.insertTweet(tweet2);
+            tr.insertTweet(tweet3);
+            tr.insertTweet(tweet4);
+            tr.insertTweet(tweet5);
             tr.insertTweet(tweet6);
+
+            System.out.println("Insere TweetsByUser");
 
             tr.insertTweetByUser(tweet);
             tr.insertTweetByUser(tweet2);
@@ -76,27 +82,33 @@ public class HelloTweet {
             tr.insertTweetByUser(tweet5);
             tr.insertTweetByUser(tweet6);
 
-            System.out.println("\n\nBuscando tweets em TweetsByUser");
+            System.out.println("\n\nBuscando tweets em Tweets");
+            tr.selectAll();
+
+            System.out.println("Buscando tweets em TweetsByUser");
             tr.selectAllByUser();
 
-            System.out.println("\n\nBuscando tweets por usuario: Messi");
+            System.out.println("Buscando tweets por usuario: Messi");
             tr.selectAllByUser("Messi");
 
-            System.out.println("Buscando tweets por usuario: Suarez");
-            tr.selectAllByUser("Suarez");
 
-            System.out.println("Buscando tweets");
-            tr.selectAll();
-
-            System.out.println("Deleting tweet \"Olha a dentada\" - id=12");
+            System.out.println("Deleting tweet \"Olha a dentada\" - id=12 na tabela Tweets");
             tr.deleteTweet(12);
 
-            System.out.println("Buscando tweets depois do delete");
+            System.out.println("Deleting tweet \"Olha a dentada\" - id=12 na tabela TweetsByUser");
+            tr.deleteTweetByUser(12, "Suarez");
+
+            System.out.println("Buscando tweets depois do delete em Tweets");
             tr.selectAll();
+
+            System.out.println("Buscando tweets depois do delete em TweetsByUser");
+            tr.selectAllByUser();
 
             System.out.println("Deleta tabela Tweets");
             tr.deleteTable("Tweets");
 
+            System.out.println("Deleta tabela TweetsByUser");
+            tr.deleteTable("TweetsByUser");
 
             System.out.println("Deleta keyspace");
             sr.deleteKeyspace("tweets");
